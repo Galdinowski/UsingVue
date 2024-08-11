@@ -11,7 +11,7 @@ const routes = [
     path: '/ibge',
     name: 'ibge',
     
-    component: () => import( '../views/AboutView.vue')
+    component: () => import( '/home/galdino/DesafioTecnico/VueParaEstagio/UsingVue/usandovue./src/views/AboutView.vue')
   }
 ]
 

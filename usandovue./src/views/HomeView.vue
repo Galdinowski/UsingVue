@@ -1,18 +1,39 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Dados do JSON local</h1>
+    <ul class="" v-if="data.length">
+      <li v-for="item in data" :key="item.datetime">{{ item.value }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { useApiStore } from '/home/galdino/DesafioTecnico/VueParaEstagio/UsingVue/usandovue./src/stores/MyStore.js';
+ import data from '/home/galdino/DesafioTecnico/VueParaEstagio/UsingVue/usandovue./db/db.json'
+ 
+
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+  data()
+  {
+    return{
+      data
+    }
+  },
+  setup() {
+    const apiStore = useApiStore();
+
+    const loadData = () => {
+      apiStore.fetchData();
+    };
+
+    return {
+      ...apiStore,
+      loadData,
+    };
+  },
+};
+
+
+
 </script>

@@ -5,10 +5,18 @@
     <div v-if="loading">Carregando...</div>
     <div v-else-if="error">{{ error }}</div>
     <div class="tabela" v-else>
-      <ul>
-        <li v-for="item in data" :key="item.siglaTipoEstacao">{{ item.descricaoTipoEstacao }}</li>
-      </ul>
-    </div>
+  <table id="dentrodaTabela">
+    <thead>
+      <tr>
+        <th> <h3>Descrição do Tipo de Estação</h3></th> </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in data" :key="item.siglaTipoEstacao">
+        <td>{{ item.descricaoTipoEstacao }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   </div>
 </template>
 
@@ -22,9 +30,7 @@ export default {
 
     return {
       data:  
- null,
-      loading: false,
-      error: null
+ null
     }
   },
   methods: {
@@ -47,7 +53,5 @@ export default {
   .tabela{
     background-color:bisque;
     color: black;
-    margin: 0 auto;
   }
-  
 </style>
